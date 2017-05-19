@@ -1,0 +1,32 @@
+{
+  "name": "corsproxy-micro",
+  "version": "0.1.0",
+  "description": "A microservice that acts as a permissive CORS proxy",
+  "main": "index.js",
+  "scripts": {
+    "start": "micro",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Greenier",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^7.3.3",
+    "micro-cors": "0.0.4",
+    "micro-ratelimit": "^0.2.0",
+    "node-fetch": "^1.6.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bengreenier/corsproxy-micro.git"
+  },
+  "keywords": [
+    "cors",
+    "proxy",
+    "rest"
+  ],
+  "bugs": {
+    "url": "https://github.com/bengreenier/corsproxy-micro/issues"
+  },
+  "homepage": "https://github.com/bengreenier/corsproxy-micro#readme"
+}
