@@ -21,10 +21,13 @@ const DEFAULT_ALLOW_HEADERS = [
 ]
 
 const handler = async (req, res) => {
-    const corsHeaders = DEFAULT_ALLOW_HEADERS
+    let corsHeaders = DEFAULT_ALLOW_HEADERS
 
-    if (req.headers['x-accept-headers']) {
-        corsHeaders.push(req.headers['x-accept-headers'].split(','))
+    if (req.method === 'OPTIONS') {
+        corsHeaders.push(req.headers['access-control-request-headers'].split(','))
+        corsHeaders = corsHeaders.filter((item, pos, self) => {
+            return self.indexOf(item) == pos;
+        });
     }
     
     res.setHeader('Access-Control-Allow-Origin', '*')
@@ -43,7 +46,6 @@ const handler = async (req, res) => {
 
     const headers = req.headers
     headers['host'] = remoteUrl.host + (remoteUrl.port ? `:${remoteUrl.port}` : '')
-    delete headers['x-accept-headers']
 
     const response = await fetch(remoteUrl, {
         method: req.method,
@@ -54,4 +56,6 @@ const handler = async (req, res) => {
     res.end(await response.buffer())
 }
 
-module.exports = rateLimit(handler)
+module.exports = rateLimit({
+    
+}, handler)

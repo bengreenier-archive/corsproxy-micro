@@ -30,12 +30,12 @@ Content-Length: 119
 {"username":"RottenAnt","availability":{"github":true,"dot-com":false,"twitter":true,"linkedin":false,"facebook":true}}
 ```
 
-or (supporting non-standard cors headers by request)
+or (supporting non-standard cors headers)
 
 ```
-GET /http://usernames.io/new HTTP/1.1
+OPTIONS /http://usernames.io/new HTTP/1.1
 Host: localhost:3000
-X-Accept-Headers: X-Nonstandard-Header
+Access-Control-Request-Headers: X-Nonstandard-Header
 ```
 
 =>
@@ -50,9 +50,9 @@ Access-Control-Allow-Credentials: true
 Content-Type: application/json; charset=utf-8
 Date: Fri, 19 May 2017 21:06:53 GMT
 Connection: keep-alive
-Content-Length: 119
+Content-Length: 2
 
-{"username":"RottenAnt","availability":{"github":true,"dot-com":false,"twitter":true,"linkedin":false,"facebook":true}}
+{}
 ```
 
 ## License
